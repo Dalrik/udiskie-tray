@@ -3,11 +3,13 @@ from gi.repository import Gtk
 import sys
 import dbus
 import udiskie.device
+import notify
 
 class RemoveTrayIcon(Gtk.StatusIcon):
-    def __init__(self, bus):
+    def __init__(self, bus, notify):
         Gtk.StatusIcon.__init__(self)
         self.bus = bus
+        self.notify = notify
         self.items = []
 
         self.set_from_icon_name("media-eject")
@@ -69,9 +71,10 @@ class RemoveTrayIcon(Gtk.StatusIcon):
         self.show_menu(None, 1, Gtk.get_current_event_time())
 
     def on_select_unmount(self, widget, device):
+        self.notify(device.device_file())
         device.unmount()
 
 bus = dbus.SystemBus()
-
-icon = RemoveTrayIcon(bus)
+notify = notify.Notifier("udiskie-tray").unmount
+icon = RemoveTrayIcon(bus, notify)
 Gtk.main()
