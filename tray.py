@@ -20,12 +20,9 @@ class RemoveTrayIcon(Gtk.StatusIcon):
 
         menu = """
             <ui>
-                <menubar name="MenuBar">
-                    <menu action="Menu">
-                        <separator />
-                        <menuitem action="Quit" />
-                    </menu>
-                </menubar>
+                <popup action="Menu">
+                    <menuitem action="Quit" />
+                </popup>
             </ui>
         """
         actions = [ 
@@ -37,7 +34,7 @@ class RemoveTrayIcon(Gtk.StatusIcon):
         self.manager = Gtk.UIManager()
         self.manager.insert_action_group(actg,0)
         self.manager.add_ui_from_string(menu)
-        self.menu = self.manager.get_widget('/MenuBar/Menu/Quit').props.parent
+        self.menu = self.manager.get_widget('/Menu/Quit').props.parent
 
     def on_quit(self, widget=None):
         Gtk.main_quit()
@@ -65,7 +62,7 @@ class RemoveTrayIcon(Gtk.StatusIcon):
     def show_menu(self, status, button, timestamp):
         self._clear_menu()
         self._build_menu()
-        self.menu.popup(None, None, None, None, button, timestamp)
+        self.menu.popup(None, None, self.position_menu, self, button, timestamp)
 
     def on_activate(self, data):
         self.show_menu(None, 1, Gtk.get_current_event_time())
