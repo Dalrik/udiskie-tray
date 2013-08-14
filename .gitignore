@@ -1,5 +1,6 @@
 *.pyc
 CHANGES
+*.swp
 
 # distutils files
 build/
