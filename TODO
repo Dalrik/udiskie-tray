@@ -1,0 +1,3 @@
+- handle dbus restart
+- properly daemonize
+- set the process name
