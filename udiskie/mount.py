@@ -7,7 +7,7 @@ import optparse
 import os
 
 import dbus
-import gobject
+from gi.repository import GObject
 
 try:
     from xdg.BaseDirectory import xdg_config_home
@@ -154,4 +154,4 @@ def cli(args):
 
     mounter = AutoMounter(bus=None, filter_file=options.filters, notify=notify)
     mounter.mount_present_devices()
-    return gobject.MainLoop().run()
+    return GObject.MainLoop().run()
