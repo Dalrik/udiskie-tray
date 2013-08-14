@@ -18,13 +18,14 @@ Dependencies
 ------------
 
 - dbus-python_
-- python-gobject_
+- pygobject_
 - libnotify_
 - gtk3_
 
 .. _dbus-python: http://dbus.freedesktop.org/releases/dbus-python/
 .. _pygobject: http://ftp.gnome.org/pub/gnome/sources/pygobject/
-.. _notify-python: http://www.galago-project.org/files/releases/source/notify-python/
+.. _libnotify: http://ftp.gnome.org/pub/gnome/sources/libnotify/
+.. _gtk3: http://ftp.gnome.org/pub/gnome/sources/gtk+/
 
 Permissions
 -----------
