@@ -14,5 +14,6 @@ setup(
     scripts=[
         'bin/udiskie',
         'bin/udiskie-umount',
+        'bin/udiskie-tray',
     ],
 )
