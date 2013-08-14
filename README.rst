@@ -7,18 +7,20 @@ storage devices.
 
 .. _udisks: http://www.freedesktop.org/wiki/Software/udisks
 
-Maintainer Wanted
------------------
+Original version
+----------------
 
-I'm not longer using udiskie on my systems. The code still works, but it's been
-neglected for a while.
+This is a fork of udiskie by Byron Clark (http://bitbucket.org/byronclark/udiskie)
+enhanced to provide a system tray icon for removing devices, as well as
+upgrading to newer APIs 
 
 Dependencies
 ------------
 
 - dbus-python_
-- pygobject_
-- notify-python_
+- python-gobject_
+- libnotify_
+- gtk3_
 
 .. _dbus-python: http://dbus.freedesktop.org/releases/dbus-python/
 .. _pygobject: http://ftp.gnome.org/pub/gnome/sources/pygobject/
