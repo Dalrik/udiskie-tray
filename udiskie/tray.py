@@ -3,7 +3,7 @@ from gi.repository import Gtk
 import sys
 import dbus
 import udiskie.device
-import notify
+import udiskie.notify
 
 class RemoveTrayIcon(Gtk.StatusIcon):
     def __init__(self, bus, notify):
@@ -72,6 +72,6 @@ class RemoveTrayIcon(Gtk.StatusIcon):
         device.unmount()
 
 bus = dbus.SystemBus()
-notify = notify.Notifier("udiskie-tray").unmount
+notify = udiskie.notify.Notify('udiskie.tray').umount
 icon = RemoveTrayIcon(bus, notify)
 Gtk.main()
