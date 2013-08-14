@@ -5,7 +5,7 @@
 #   util/prepare_release -r <revision>
 # Resulting tarball will reside in dist/
 
-REVISION=tip
+REVISION=HEAD
 while getopts "r:" OPTION; do
     case ${OPTION} in
         r) REVISION="${OPTARG}"
@@ -17,8 +17,8 @@ PYTHON=${PYTHON:-python}
 [ -d dist ] || mkdir dist
 TMPDEST=$(mktemp -d --tmpdir udiskie-release-XXXXXXXX)
 
-hg archive -t files -r "${REVISION}" "${TMPDEST}"
-hg log --style=changelog -r "${REVISION}:0" > "${TMPDEST}/CHANGES"
+git archive --format=tar "${REVISION}" | tar -x -C "${TMPDEST}"
+git log "${REVISION}" > "${TMPDEST}/CHANGES"
 
 pushd "${TMPDEST}"
 mv README.rst README
